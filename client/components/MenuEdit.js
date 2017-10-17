@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
-import { browserHistory } from 'react-router';
-import { Link } from 'react-router';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 /* My Components */
 /* import Header from './Header';*/
-
 /* Actions */
 import {deleteCard} from '../actions/cards.actions';
 import {setShowModal} from '../actions/preferences.actions';
 
-import { ActionCreators } from 'redux-undo';
+import {ActionCreators} from 'redux-undo';
+
 var { undo, redo } = ActionCreators;
 
 class MenuEdit extends Component {
@@ -59,7 +55,7 @@ class MenuEdit extends Component {
 		<hr/>
 		<li className="hidden" key="prefs">
 		    <a onClick={this.saveFile}>
-			Nulis Preferences
+			cardflow Preferences
 		    </a> 
 		</li>
 		</ul>

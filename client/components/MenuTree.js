@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-import { browserHistory } from 'react-router';
-import { Link } from 'react-router';
-
+import {browserHistory, Link} from 'react-router';
 /* Vendor Components */
 import FileReaderInput from 'react-file-reader-input';
-
 /* Actions */
 import * as treesActions from '../actions/trees.actions';
 /* Utils */
-import { getCard } from '../utils/cards';
 import handleScroll from '../utils/handleScroll';
 
 

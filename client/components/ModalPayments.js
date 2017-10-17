@@ -20,7 +20,7 @@ class ModalPayments extends Component {
 	/* Before taking a person to paypal,
 	   send a dumb simple post request confirming the payment */
 	var email = this.props.user.email;
-	var paymentNotification = "https://nulis.io/api/v1/purchase/" + email;
+	var paymentNotification = "https://cardflow.io/api/v1/purchase/" + email;
 	/* var paymentNotification = "http://localhost:3000/api/v1/purchase/" + email;*/
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", paymentNotification, true);
@@ -28,7 +28,7 @@ class ModalPayments extends Component {
     }
     
     render() {
-	const paymentNotification = "https://nulis.io/api/v1/purchase/" + this.props.user.email;
+	const paymentNotification = "https://cardflow.io/api/v1/purchase/" + this.props.user.email;
 	return (
 	    <Modal className="upgrade"
 		   show={this.props.showModal =="upgrade" ? true : false}
@@ -37,16 +37,16 @@ class ModalPayments extends Component {
 		    <h1>Upgrade Account</h1>
 		</Modal.Header>
 		<div className="panel-modal">
-		    <p>You are currently using a free version of Nulis, which allows you to create up to {this.props.user.cardLimit} cards per month.</p>
+		    <p>You are currently using a free version of cardflow, which allows you to create up to {this.props.user.cardLimit} cards per month.</p>
 		    <p>Upgrade your account to create unlimited cards (both online and on desktop), get priority support, early access to new features, and help me to make this project even more awesome!</p>
-		    <p>Because Nulis has launched only recently, as an early adopter
+		    <p>Because cardflow has launched only recently, as an early adopter
 			you can purchase the unlimited lifetime account for only 
 			<b> $20</b>.
 		    </p>
 		    <h1> Plans: </h1>
 		    <div className="panel-pricing">
 			<h2>Referral</h2>
-			<p>Get Nulis for free</p>
+			<p>Get cardflow for free</p>
 			<a className="btn right"
 			   onClick={()=>{
 				   this.props.setShowModal("share");
@@ -74,7 +74,7 @@ class ModalPayments extends Component {
 				   value={paymentNotification} />
 			    <input type="hidden" name="hosted_button_id"
 				   value="EE9L2NEJYDY4W"/>
-			    <input type="button" type="submit"
+			    <input type="button" value="submit"
 				   className="btn right" value="Upgrade" />
 			</form>
 			<div className="clearfix"></div>			
@@ -123,17 +123,17 @@ class ModalPayments extends Component {
 		      */}
 		    {/*  		    
 			<div className="panel-pricing">
-			<h2>Nulis Unlimited</h2>
+			<h2>cardflow Unlimited</h2>
 			<StripeCheckout token={this.sendToken.bind(this)}
 			stripeKey="pk_live_ARCBuuuSIJ2ATgFtXCqpISQV"
-			name="Nulis"
+			name="cardflow"
 			description="Tree editor for writers"
 			panelLabel="Upgrade"
 			amount={2000}
 			currency="USD"
 			allowRememberMe={false}
 			email={localStorage.getItem('email')}
-			image="https://nulis.io/media/logo.png">
+			image="https://cardflow.io/media/logo.png">
 			<a className="btn right">Upgrade</a>
 			</StripeCheckout>
 			<div className="clearfix"></div>

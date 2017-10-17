@@ -305,7 +305,7 @@ function updateTree(req, res, next) {
 
 module.exports = {
     secret: 'secret-key',
-    domain: 'https://nulis.io',
+    domain: 'https://cardflow.io',
     stripeSecret: 'sk_live_HvJdtCSh7gmkvraqc05bUieI'
 };
 
@@ -1702,7 +1702,7 @@ _mongoose2.default.Promise = global.Promise;
 // Cors allows requests from different domains
 // A logging framework, terminal output for debugging.
 
-var MONGO_DB_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/nulis';
+var MONGO_DB_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/cardflow';
 console.log("Connecting to the db at " + MONGO_DB_URL);
 _mongoose2.default.connect(MONGO_DB_URL, function (error) {
 				if (error) {

@@ -1,14 +1,14 @@
 import axios from 'axios';
 import saveAs from 'save-as'
 
-import { browserHistory } from 'react-router';
-
-import { DEFAULT_TREE } from '../data';
-
-import { getCard } from '../utils/cards';
-import { handleScroll } from '../utils/handleScroll';
+import {browserHistory} from 'react-router';
+import {handleScroll} from '../utils/handleScroll';
 
 import {API_URL} from './cards.actions';
+import aboutTemplate from '../../assets/trees/about.nls';
+import blankTemplate from '../../assets/trees/blank.nls';
+import storyTemplate from '../../assets/trees/story.nls';
+import promptTemplate from '../../assets/trees/prompt.nls';
 
 export function updateTreeName(value) {
     /* unused */
@@ -256,11 +256,6 @@ export function listTrees() {
     };
 }
 
-
-import aboutTemplate from '../../assets/trees/about.nls';
-import blankTemplate from '../../assets/trees/blank.nls';
-import storyTemplate from '../../assets/trees/story.nls';
-import promptTemplate from '../../assets/trees/prompt.nls';
 
 export function loadTemplate(name) {
     const aboutTree = JSON.parse(aboutTemplate);

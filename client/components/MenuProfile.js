@@ -1,9 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
-import { browserHistory } from 'react-router';
-import { Link } from 'react-router';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 /* Actions */
 import * as profilesActions from '../actions/profiles.actions';
 import {setShowModal} from '../actions/preferences.actions';

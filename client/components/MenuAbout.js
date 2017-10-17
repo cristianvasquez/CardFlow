@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-import { browserHistory } from 'react-router';
-import { Link } from 'react-router';
-
+import {browserHistory} from 'react-router';
 /* My Components */
 /* import Header from './Header';*/
-
 /* Actions */
 import * as treesActions from '../actions/trees.actions';
 import {setShowModal} from '../actions/preferences.actions';
@@ -24,7 +21,7 @@ class MenuAbout extends Component {
 				this.props.loadTemplate("About");
 				browserHistory.push('/about');
 			    }}>
-			    About Nulis</a>
+			    About cardflow</a>
 		    </li>
 		    <li key="tutorial">
 			<a href="https://fictionhub.io/post/story-writing-process"
@@ -34,7 +31,7 @@ class MenuAbout extends Component {
 		    </li>
 		    <li key="desktop" className={" "+(isDesktop ? "hidden":"")}>
 			<a onClick={()=>this.props.setShowModal("desktop")}>
-			    Nulis Desktop</a>
+			    cardflow Desktop</a>
 		    </li>
 		    <li key="support">
 			<a onClick={()=>this.props.setShowModal("support")}>
@@ -48,7 +45,7 @@ class MenuAbout extends Component {
 			</a>
 		    </li>
 		    <li key="subreddit">
-			<a href="https://www.reddit.com/r/nulis"
+			<a href="https://www.reddit.com/r/cardflow"
 			   target="_blank">
 			    Subreddit
 			</a>

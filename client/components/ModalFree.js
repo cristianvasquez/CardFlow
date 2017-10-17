@@ -18,9 +18,9 @@ class ModalFree extends Component {
 		    <h1>Surprise free upgrade!</h1>
 		</Modal.Header>
 		<div className="panel-modal">
-		    <p>Thank you very much for deciding to purchase Nulis!</p>
+		    <p>Thank you very much for deciding to purchase cardflow!</p>
 		    <p>I have not implemented the payments yet, but I want to thank you for being one of the early users, so the upgrade is yours completely free! =)</p>
-		    <p>If you would still like to support this project - you can share it with your friends, or send me an email to <b>raymestalez@gmail.com</b> with some feedback or feature requests. That would really help me to make Nulis more awesome!</p>
+		    <p>If you would still like to support this project - you can share it with your friends, or send me an email to <b>raymestalez@gmail.com</b> with some feedback or feature requests. That would really help me to make cardflow more awesome!</p>
 		</div>
 	    </Modal>
 	);

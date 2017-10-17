@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import ReactDOM from 'react-dom';
-
 /* Vendor Components */
-import { Modal } from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
 import Cookies from "js-cookie";
-
 /* Actions */
-import {login,join} from '../actions/profiles.actions';
+import {join, login} from '../actions/profiles.actions';
 import {setShowModal} from '../actions/preferences.actions';
 
 class ModalLogin extends Component {

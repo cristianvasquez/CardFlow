@@ -1,22 +1,12 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { browserHistory } from 'react-router';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 /* Vendor */
-import Mousetrap from 'mousetrap';
-import removeMd from 'remove-markdown';
-
-
 /* Actions */
 import * as cardsActions from '../actions/cards.actions';
 import * as treesActions from '../actions/trees.actions';
 import {fetchUser, logout} from '../actions/profiles.actions';
 import {setShowModal} from '../actions/preferences.actions';
-import { ActionCreators } from 'redux-undo';
-var { undo, redo } = ActionCreators;
-
+import {ActionCreators} from 'redux-undo';
 /* My Components */
 /* Modals */
 import ModalLogin from './ModalLogin';
@@ -37,6 +27,8 @@ import MenuAbout from './MenuAbout';
 import CardLimit from './CardLimit';
 import Search from './Search';
 import Stats from './Stats';
+
+var { undo, redo } = ActionCreators;
 
 class Header extends Component {
     render() {

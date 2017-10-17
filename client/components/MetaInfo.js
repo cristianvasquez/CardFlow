@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 /* Vendor Components */
 import MetaTags from 'react-meta-tags';
 import removeMd from 'remove-markdown';
@@ -9,9 +8,9 @@ class MetaInfo extends Component {
     render () {
 	const { tree } = this.props;
 
-	var title = "Nulis";
+	var title = "cardflow";
 	if (tree.name) {
-	    title = tree.name + " - Nulis";
+	    title = tree.name + " - cardflow";
 	}
 	const description = removeMd(tree.cards.children[0].content).substring(0,120);	
 	

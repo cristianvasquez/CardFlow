@@ -1,26 +1,20 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
-
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {browserHistory} from 'react-router';
 /* Vendor components */
-import { DragDropContext } from 'react-dnd';
+import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-
 /* My Components */
-import Header from './Header';
 import CardGroup from './CardGroup';
 import Card from './Card';
 import MetaInfo from './MetaInfo';
-
 /* Actions */
 import * as cardsActions from '../actions/cards.actions';
 import * as treesActions from '../actions/trees.actions';
 import {updateWordcount} from '../actions/profiles.actions';
-
 /* Utils */
-import { cardsToColumns, search } from '../utils/cards';
+import {cardsToColumns, search} from '../utils/cards';
 import handleScroll from '../utils/handleScroll';
-import {unsavedWarning} from '../utils/misc';
 
 
 @DragDropContext(HTML5Backend)

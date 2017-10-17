@@ -1,24 +1,29 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 /* Actions */
-import { createCard, updateCard, deleteCard,
-	 moveCard, activateCard, setEditing,
-	 updateTree, loadTree } from '../actions/index';
-
+import {
+    activateCard,
+    createCard,
+    deleteCard,
+    loadTree,
+    moveCard,
+    setEditing,
+    updateCard,
+    updateTree
+} from '../actions/index';
 /* Vendor components */
 import Textarea from 'react-textarea-autosize';
 
 
 class Editor extends Component {
-    componentDidMount(){
-	if (this.props.card.id == this.props.tree.activeCard) {
-	    this.editor.focus();
-	    this.editor.selectionStart = this.props.card.content.length;	    
-	    this.editor.selectionEnd= this.props.card.content.length;
-	}
-    }
 
+    componentDidMount(){
+		if (this.props.card.id == this.props.tree.activeCard) {
+			this.editor.focus();
+			this.editor.selectionStart = this.props.card.content.length;
+			this.editor.selectionEnd= this.props.card.content.length;
+		}
+    }
 
     componentDidUpdate(prevProps){
 	if (this.props.card.id == this.props.tree.activeCard &&
@@ -49,6 +54,7 @@ class Editor extends Component {
 	    </Textarea>
 	)
     }
+
 }
 
 

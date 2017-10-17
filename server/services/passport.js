@@ -9,8 +9,6 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const User = require('../models/user');
 const config = require('../../config/config.js');
 
-
-
 // by default you send a POST request with username and password
 // here Im telling it to use email instead
 const localOptions = { usernameField: 'email'};

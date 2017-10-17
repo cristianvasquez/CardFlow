@@ -1,8 +1,7 @@
-import fs from 'fs';
 import removeMd from 'remove-markdown';
 import cuid from 'cuid';
 import slug from 'slug';
-import { cardsToColumns, getCard } from '../../client/utils/cards';
+import {cardsToColumns, getCard} from '../../client/utils/cards';
 
 const Tree = require('../models/tree');
 

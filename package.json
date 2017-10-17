@@ -1,7 +1,7 @@
 {
-  "name": "nulis",
+  "name": "cardflow",
   "version": "0.0.1",
-  "description": "Tree editor for writers.",
+  "description": "A replacement of my desktop wiki.",
   "main": "./server/index.js",
   "scripts": {
     "startserver": "cd ./server && BABEL_DISABLE_CACHE=1 NODE_ENV=development nodemon index.js",
@@ -11,16 +11,6 @@
     "build": "NODE_ENV=production cd ./client &&  webpack -p --config ./webpack.config.js --progress &&  cd ../server && webpack --config ./webpack.config.server.js --progress",
     "serve": "cd ./server && NODE_ENV=production forever ./index.js > log.txt"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/raymestalez/nulis.git"
-  },
-  "author": "Ray Alez",
-  "license": "AGPL",
-  "bugs": {
-    "url": "https://github.com/raymestalez/nulis/issues"
-  },
-  "homepage": "https://github.com/raymestalez/nulis#readme",
   "devDependencies": {
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",

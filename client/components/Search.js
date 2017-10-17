@@ -1,12 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import ReactDOM from 'react-dom';
-
-import { browserHistory } from 'react-router';
-import { Link } from 'react-router';
-
 /* My Components */
-
 /* Actions */
 import * as treesActions from '../actions/trees.actions';
 

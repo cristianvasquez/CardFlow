@@ -8,7 +8,7 @@ services:
         - ./data/db:/data/db
   web:
     build: .
-    working_dir: /home/nulis
+    working_dir: /home/cardflow
     command: npm run serve
     depends_on:
       - db
@@ -17,9 +17,9 @@ services:
     ports:
       - "3090:3000"
     volumes:
-      - ./client:/home/nulis/client
-      - ./server:/home/nulis/server
-      - ./desktop:/home/nulis/desktop
-      - ./package.json:/home/nulis/package.json
+      - ./client:/home/cardflow/client
+      - ./server:/home/cardflow/server
+      - ./desktop:/home/cardflow/desktop
+      - ./package.json:/home/cardflow/package.json
     environment:
-      MONGO_URL: mongodb://db:27017/nulis
+      MONGO_URL: mongodb://db:27017/cardflow

@@ -1,4 +1,5 @@
-import { Router } from 'express';
+import {Router} from 'express';
+
 const router = new Router();
 
 const passport = require('passport');

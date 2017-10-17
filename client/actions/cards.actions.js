@@ -1,22 +1,14 @@
-import axios from 'axios';
-import { browserHistory } from 'react-router';
+import {handleScroll} from '../utils/handleScroll';
 
-import { DEFAULT_TREE } from '../data';
+var API_URL = 'http://localhost:3000/api/v1';
 
-import { getCard } from '../utils/cards';
-import { handleScroll } from '../utils/handleScroll';
 
-var API_URL = 'https://nulis.io/api/v1';
-if (process.env.NODE_ENV === 'development') {
-    API_URL = 'http://localhost:3000/api/v1';
-}
 console.log("API_URL " + API_URL);
 export {API_URL};
 
 const config = {
     headers:  { authorization: localStorage.getItem('token')}	
 };
-
 
 
 export function updateTreeName(value) {
@@ -46,11 +38,12 @@ export function checkCheckbox(index, cardId) {
     /* unused */
     return {
 	type: 'CHECKBOX',
-	payload: {index:index, cardId:cardId}
+        payload: {
+            index:index,
+            cardId:cardId
+        }
     }
 }
-
-
 
 export function createCard(direction, card) {
     var cardsCreated = 0;
@@ -60,15 +53,15 @@ export function createCard(direction, card) {
     localStorage.setItem('cardsCreated', (cardsCreated+1));
     
     return {
-	type: 'CREATE_CARD',
-	payload: {direction,card}
+        type: 'CREATE_CARD',
+        payload: {direction,card}
     }
 }
 
 export function dropCard(direction, relativeTo, card) {
     return {
-	type: 'DROP_CARD',
-	payload: {direction, relativeTo, card}
+        type: 'DROP_CARD',
+        payload: {direction, relativeTo, card}
     }
 }
 

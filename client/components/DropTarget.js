@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
 
-import { DropTarget } from 'react-dnd';
+import {DropTarget} from 'react-dnd';
 
 const dropTarget = {
     drop(props) {

@@ -18,7 +18,7 @@ import * as treeControllers from './controllers/tree.controllers';
 
 // Connect to db.
 mongoose.Promise = global.Promise;
-var MONGO_DB_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/nulis';
+var MONGO_DB_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/cardflow';
 console.log("Connecting to the db at " + MONGO_DB_URL);
 mongoose.connect(MONGO_DB_URL, (error) => {
     if (error) {

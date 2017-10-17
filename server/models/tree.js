@@ -63,7 +63,7 @@ treeSchema.pre('save', function(next){
     var now = new Date();
     this.updatedAt = now;
     if ( !this.createdAt ) {
-	this.createdAt = now;
+		this.createdAt = now;
     }
     next();
 });

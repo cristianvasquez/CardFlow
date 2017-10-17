@@ -1,5 +1,6 @@
-import { Router } from 'express';
+import {Router} from 'express';
 import * as treeControllers from '../controllers/tree.controllers';
+
 const router = new Router();
 
 const passport = require('passport');

@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 import Mousetrap from 'mousetrap';
 import Remarkable from 'remarkable';
-
 /* Actions */
 import * as cardsActions from '../actions/cards.actions';
 import {updateSearchQuery} from '../actions/trees.actions';
-
 /* Vendor components */
 import SimpleMDE from 'react-simplemde-editor';
 

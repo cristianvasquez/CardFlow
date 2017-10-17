@@ -16,16 +16,16 @@ class ModalShare extends Component {
 		   show={this.props.showModal =="share" ? true : false}
 		   onHide={()=>this.props.setShowModal(false)}>
 		<Modal.Header closeButton>
-		    <h1>Get Nulis for Free!</h1>
+		    <h1>Get cardflow for Free!</h1>
 		</Modal.Header>
 		<div className="panel-modal">
-		    <p>There are two ways to get the unlimited version of Nulis for free. </p>
+		    <p>There are two ways to get the unlimited version of cardflow for free. </p>
 		    <p>1. Share this link with your friends:</p>
 		    <div className="panel-referral">
-			https://nulis.io/?ref={this.props.referralCode}
+			https://cardflow.io/?ref={this.props.referralCode}
 		    </div>
 		    <p> You will get extra 100 cards for every person who signs up using this link, and they get 100 extra cards as well.<br/> If you will invite 10 people - you get a lifetime unlimited account for free.</p>
-		    <p>2. Write a blog post about Nulis, send a link to <b>raymestalez@gmail.com</b> - and I will give you an unlimited account.</p>
+		    <p>2. Write a blog post about cardflow, send a link to <b>raymestalez@gmail.com</b> - and I will give you an unlimited account.</p>
 
 		    <a className="btn"
 		       onClick={()=>{this.props.setShowModal("upgrade");}}>

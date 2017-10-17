@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-import { ActionCreators } from 'redux-undo';
-var { undo, redo } = ActionCreators;
-
+import {ActionCreators} from 'redux-undo';
 /* Vendor components */
 import Mousetrap from 'mousetrap';
-
 /* Actions */
 import * as cardsActions from '../actions/cards.actions';
 import * as treesActions from '../actions/trees.actions';
+
+var { undo, redo } = ActionCreators;
 
 class Hotkeys extends Component {
     componentDidMount(){

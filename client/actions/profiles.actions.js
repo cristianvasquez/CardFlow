@@ -3,7 +3,6 @@ import { browserHistory } from 'react-router';
 
 import {API_URL} from './cards.actions';
 
-
 export function fetchUser() {
     const config = {
 	headers:  { authorization: localStorage.getItem('token')}
