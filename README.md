@@ -1,16 +1,13 @@
-**https://nulis.io**
+**CardFlow**
 
-Nulis is an open source tree editor for writers, inspired by [Gingko](https://gingkoapp.com/). To learn how it works, visit **https://nulis.io/about** and try it out.
+A replacement of my Desktop Wiki, based on [Nulis](https://nulis.io) which in turn is based on my beloved [Gingko](https://gingkoapp.com/) (to which I'm subscribed)
 
-![](http://nulis.io/media/screenshot-3.png)
+# Tech
 
-Nulis allows you to represent any information as trees, beginning with abstract ideas and refining them by adding nested cards that contain more details. This format is very useful for writing stories, articles, outlining courses, GTD, and many other purposes. For example, you can read [this article](https://fictionhub.io/post/story-writing-process/) to see how you can use it for outlining fictional stories. I think that organizing your creative projects in such way is an incredibly powerful idea, and I want more people to be able to apply use it in their own process.
+Node/React/Redux
 
-I've built Nulis with Node/React/Redux, so that many developers would be able to understand the code and easily customize it for their own purposes. I hope that you will find it useful as an awesome tool, or just as an example of building a pretty cool SaaS with this tech =)
+# To run
 
-This project is still very much work in progress, so feel free to suggest improvements or submit bug reports. You can open issues in this repo, or send me an email to **raymestalez@gmail.com**.
+docker-compose up
 
-If you are looking for web development or consulting services - come visit my latest project [Startup lab](https://startuplab.io/).
-
-
-If you have found this useful, you can also check out another big project I have open sourced recently - [a fiction publishing platform](https://github.com/raymestalez/fictionhub).
+Browse to [http://localhost:3090](http://localhost:3090)
