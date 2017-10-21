@@ -5,33 +5,33 @@ import * as actions from '../../actions/profiles';
 import { Link } from 'react-router';
 
 class Signup extends Component {
-    handleFormSubmit({email, password}) {
-	/* console.log(email, password);*/
-	// signupUser comes from actions.
-	// it is an action creator that sends an email/pass to the server
+    handleFormSubmit({username: username}) {
+        console.log(username);
+        // signupUser comes from actions.
+	// it is an action creator that sends an username/pass to the server
 	// and if they're correct, saves the token
 	var credentials = {
-	    "email": email,
-	    "password": password
+	    "username": username
 	}
 	console.log("Credentials " + JSON.stringify(credentials));
 
-	this.props.signupUser({email,password});
+	this.props.signupUser({username});
     }
 
     renderAlert(){
-	if (this.props.errorMessage) {
-	    return (
-		<div className="alert alert-danger">
-		    {this.props.errorMessage}
-		</div>
-	    );
-	}
+		if (this.props.errorMessage) {
+			return (
+			<div className="alert alert-danger">
+				{this.props.errorMessage}
+			</div>
+			);
+		}
     }
+
     render () {
 	/* props from reduxForm */
-	const { handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
-	/* console.log(...email);*/
+	const { handleSubmit, fields: { username: username }} = this.props;
+	/* console.log(...username);*/
 	console.log(this.props.fields);
 
 	
@@ -44,12 +44,8 @@ class Signup extends Component {
 		    {this.renderAlert()}
 		</fieldset>
 		<fieldset className="form-group">
-		    <label>Email:</label>
-		    <input {...email} className="form-control" />
-		</fieldset>
-		<fieldset className="form-group">
-		    <label>Password:</label>
-		    <input {...password} type="password" className="form-control" />
+		    <label>Username:</label>
+		    <input {...username} className="form-control" />
 		</fieldset>
 		<br/>
 		<fieldset className="form-group">
@@ -65,26 +61,11 @@ function mapStateToProps(state) {
     return { errorMessage:state.auth.error };
 }
 
-/* 
-function validate(formProps) {
-    const errors = {};
-
-    if (!formProps.email) {
-	errors.email = "Enter an email";	
-    }
-
-    if (!formProps.password) {
-	errors.password = "Enter a password";	
-    }
-
-    return errors;
-}
-*/
 
 export default connect(mapStateToProps, actions)(
     reduxForm({
-	form: 'signup',
-	fields: ['email','password'],
+		form: 'selectUser',
+		fields: ['username'],
     })
     (Signup)
 );

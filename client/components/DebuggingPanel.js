@@ -17,8 +17,6 @@ class Name extends Component {
     }
 
     render () {
-	const { authenticated } = this.props;
-
 	return (
 	    <div className="right debugging-header">
 		{/* <a className="btn" onClick={this.createTree}>New</a> */}

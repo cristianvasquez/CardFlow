@@ -1,6 +1,6 @@
 export function setShowModal(modal) {
     return {
-	type: 'SET_SHOW_MODAL',
-	payload: modal
+        type: 'SET_SHOW_MODAL',
+        payload: modal
     };
 }

@@ -30,7 +30,7 @@ class Hotkeys extends Component {
 	    this.props.setEditing(false);
 	    if (tree.saved == false
 		&& tree.source == "Online"
-		&& tree.author == user.email) {
+		&& tree.author == user.username) {
 		this.props.updateTree(this.props.tree);
 	    }
 	    return false;
@@ -44,7 +44,7 @@ class Hotkeys extends Component {
 		/* If I've been editing - save it. */
 		if (tree.saved == false
 		    && tree.source == "Online"
-		    && tree.author == user.email) {
+		    && tree.author == user.username) {
 		    this.props.updateTree(this.props.tree);
 		}
 	    }

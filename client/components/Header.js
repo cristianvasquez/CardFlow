@@ -11,12 +11,8 @@ import {ActionCreators} from 'redux-undo';
 /* Modals */
 import ModalLogin from './ModalLogin';
 /* import ModalTreeSettings from './ModalTreeSettings';*/
-import ModalPayments from './ModalPayments';
-import ModalThankYou from './ModalThankYou';
-import ModalFree from './ModalFree';
 import ModalShare from './ModalShare';
 import ModalDesktop from './ModalDesktop';
-import ModalSupport from './ModalSupport';
 import ModalTreeSettings from './ModalTreeSettings';
 /* Menus */
 import MenuTree from './MenuTree';
@@ -24,7 +20,6 @@ import MenuEdit from './MenuEdit';
 import MenuProfile from './MenuProfile';
 import MenuAbout from './MenuAbout';
 
-import CardLimit from './CardLimit';
 import Search from './Search';
 import Stats from './Stats';
 
@@ -39,13 +34,9 @@ class Header extends Component {
 	    <div className="header">
 		<ModalTreeSettings />
 		<ModalLogin />
-		<ModalPayments />
-		<ModalThankYou />				
-		<ModalFree />
 		<ModalShare />
 		<ModalDesktop />
-		<ModalSupport />				
-		
+
 		<div className="main-menu left">
 		    <MenuTree location={this.props.location}/>
 		    { !atMyTrees ?
@@ -62,7 +53,7 @@ class Header extends Component {
 		    }
 	        {!atMyTrees
 		 && this.props.user
-		 && this.props.user.email == this.props.tree.author
+		 && this.props.user.username == this.props.tree.author
 		 && this.props.tree.source == "Online"
 		 && this.props.tree.saved ?
 		 <span className="autosaved left">
@@ -70,7 +61,6 @@ class Header extends Component {
 		 </span>
 		 : null
 		}
-		<CardLimit location={this.props.location} />
 		</div>
 
 		<div className={"stats " + (atMyTrees ? "hidden":"")}>

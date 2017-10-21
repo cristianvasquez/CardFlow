@@ -42,18 +42,18 @@ class MenuTree extends Component {
 	/* 
 	console.log("Source " + source);
 	console.log("Tree's Author " + author);
-	console.log("User " + user.email);		
+	console.log("User " + user.username);
 	*/
 
 	/* Hide the button when at my trees, or not authenticated. */
 	if (!this.props.tree || atMyTrees || !user)  { return null; }
 	/* Or if I'm the author and it's in the db, so I'm autosaving it anyway.*/
-	if (source == "Online" && author == user.email) { return null; }
+	if (source == "Online" && author == user.username) { return null; }
 
 	/* If it's a template, a file, or not my tree -
 	   show the button so I could create a new tree in my db. */
 	if (source == "Template" || source == "File"
-	    || (source == "Online" && author != user.email)) {
+	    || (source == "Online" && author != user.username)) {
 	    return (
 		<li key="saveonline">
 		    <a onClick={()=>

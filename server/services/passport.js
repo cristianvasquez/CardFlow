@@ -10,36 +10,26 @@ const User = require('../models/user');
 const config = require('../../config/config.js');
 
 // by default you send a POST request with username and password
-// here Im telling it to use email instead
-const localOptions = { usernameField: 'email'};
+// here Im telling it to use username instead
+const localOptions = { usernameField: 'username'};
 // Create local strategy.
-const localLogin = new LocalStrategy(localOptions, function(email,password,done){
+const localLogin = new LocalStrategy(localOptions, function(username,done){
     console.log("Checking username and password. If they match - pass person in.");
 
     // Verify username/password
     // Call done with the user if it's correct
     // otherwise call done with false.
-    User.findOne({email:email}, function(err,user){
+    User.findOne({username:username}, function(err, user){
 	if (err) { return done(err); }
 	/* if username not found */
 	if (!user) {
-	    console.log("User not found. " + email)
+	    console.log("User not found. " + username)
 	    return done(null, false);
 	}
-	
-	//compare passwords using the function I've defined in user model
-	user.comparePassword(password, function(err, isMatch){
-	    if (err) { return done(err); }
-	    // if passwords don't match
-	    if (!isMatch) {
-		console.log("Passwords don't match. ");
-		console.log(email);
-		return done(null, false);
-	    }
 
-	    // return user without errors
-	    return done(null, user);
-	});
+	// return user without errors
+	return done(null, user);
+
     })
 });
 

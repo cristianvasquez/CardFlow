@@ -1,5 +1,4 @@
 import cuid from 'cuid';
-import removeMd from 'remove-markdown';
 
 /* Apply a function to every child of a card.
    Return the list of updated children. */

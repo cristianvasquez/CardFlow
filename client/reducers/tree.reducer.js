@@ -1,7 +1,5 @@
 /* import { FETCH_POSTS, FETCH_POST } from '../actions/index';*/
-import { getCard, createCard, updateCard, deleteCard, moveCard,
-	 getAllChildren, getCardRelativeTo, selectCard, immutableCopy } from '../utils/cards';
-import { DEFAULT_TREE } from '../data';
+import {createCard, deleteCard, getCard, getCardRelativeTo, moveCard, selectCard, updateCard} from '../utils/cards';
 /* List of all posts and an active post  */
 /* var INITIAL_STATE = DEFAULT_TREE;*/
 

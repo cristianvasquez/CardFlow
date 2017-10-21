@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 /* Vendor Components */
-import { Modal } from 'react-bootstrap';
-
+import {Modal} from 'react-bootstrap';
 /* Actions */
 import {setShowModal} from '../actions/preferences.actions';
 

@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import * as actions from '../../actions/profiles';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 
 class Login extends Component {
     onSubmit(event) {
 	event.preventDefault();
-	console.log('Email: ' + ReactDOM.findDOMNode(this.refs.email).value);
-	const email = {email: ReactDOM.findDOMNode(this.refs.email).value};
-	this.props.createSubscriber(email);
+	console.log('Username: ' + ReactDOM.findDOMNode(this.refs.username).value);
+	const username = {username: ReactDOM.findDOMNode(this.refs.username).value};
+	this.props.createSubscriber(username);
 
 	console.log("Credentials " + JSON.stringify(credentials));
 	
-	this.props.loginUser({email,password});
+	this.props.loginUser({username: username});
     }
 
     renderAlert(){
@@ -26,9 +26,9 @@ class Login extends Component {
     }
     render () {
 	/* props from reduxForm */
-	const { handleSubmit, fields: { email, password }} = this.props;
+	const { handleSubmit, fields: { username: username }} = this.props;
 
-	/* console.log(...email);*/
+	/* console.log(...username);*/
 	return (
 	    <form onSubmit={this.handleFormSubmit.bind(this)}>
 		<fieldset className="form-group">
@@ -38,12 +38,8 @@ class Login extends Component {
 		    {this.renderAlert()}
 		</fieldset>
 		<fieldset className="form-group">
-		    <label>Email:</label>
-		    <input {...email} className="form-control" />
-		</fieldset>
-		<fieldset className="form-group">
-		    <label>Password:</label>
-		    <input {...password} type="password" className="form-control" />
+		    <label>Username:</label>
+		    <input {...username} className="form-control" />
 		</fieldset>
 		<br/>
 		<fieldset className="form-group">

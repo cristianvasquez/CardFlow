@@ -57,12 +57,11 @@ function generateCalendar(savedWordcounts) {
 }
 
 
-
-
 var INITIAL_STATE = {
     user: "",
     error: ""
 }
+
 export default function(state=INITIAL_STATE, action) {
     switch(action.type) {
 	case 'AUTH_USER':

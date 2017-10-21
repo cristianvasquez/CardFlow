@@ -5,55 +5,55 @@ const Schema = mongoose.Schema;
 // Define model. 
 const treeSchema = new Schema({
     slug: {
-	type: String,
-	unique: true,
-	required: true,	
-	lowercase: true,
-	index: true,
+		type: String,
+		unique: true,
+		required: true,
+		lowercase: true,
+		index: true,
     },
     author: {
-	type: String,
-	required: true,	
-	lowercase: true,
-	index: true,
+		type: String,
+		required: true,
+		lowercase: true,
+		index: true,
     },
     name: {
-	type: String,
-	unique: false,
-	required: true,	
-	minlength: 1,
-	trim: true,
-	index: true	
+		type: String,
+		unique: false,
+		required: true,
+		minlength: 1,
+		trim: true,
+		index: true
     },
     createdAt: {
-	type: Date,
-	default: null
+		type: Date,
+		default: null
     },
     updatedAt: {
-	type: Date,
-	default: null
+		type: Date,
+		default: null
     },
     cards: {
-	type: JSON,
-	unique: false,
-	required: false,	
-	minlength: 1
+		type: JSON,
+		unique: false,
+		required: false,
+		minlength: 1
     },
     activeCard: {
-	type: String,
-	default: 0
+		type: String,
+		default: 0
     },
     modified: {
-	type: Boolean,
-	default: false
+		type: Boolean,
+		default: false
     },
     editing: {
-	type: Boolean,
-	default: false
+		type: Boolean,
+		default: false
     }
 });
 /*
-   owner: ownerId or email?
+   owner: ownerId or username?
 */
 
 treeSchema.set('autoIndex', false);

@@ -1,4 +1,7 @@
+// import React, { Component } from 'react';
+
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 
 /* Vendor */
@@ -16,19 +19,16 @@ import Hotkeys from './Hotkeys';
 
 /* Actions */
 import { fetchUser } from '../actions/profiles.actions';
+console.log("App.js");
 
 class App extends Component {
+
     componentDidMount() {
+
 	if (localStorage.getItem('token')){
 	    this.props.fetchUser();
 	}
 
-	/* Save referral/source to cookies */
-	if (this.props.location.query.ref) {
-	    var referral = this.props.location.query.ref;
-	    /* Save refferral link cookie */
-	    Cookies.set("referral", referral, {expires: 7});
-	}
 	if (this.props.location.query.src) {
 	    var source = this.props.location.query.src;
 	    /* Save source link cookie */

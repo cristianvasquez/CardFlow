@@ -13,8 +13,7 @@ class ModalLogin extends Component {
     onSubmit(event) {
 	event.preventDefault();
 	const credentials = {
-	    email: ReactDOM.findDOMNode(this.refs.email).value,
-	    password: ReactDOM.findDOMNode(this.refs.password).value
+	    username: ReactDOM.findDOMNode(this.refs.username).value,
 	};
 	
 	const type = this.props.showModal;
@@ -33,8 +32,7 @@ class ModalLogin extends Component {
     render() {
 	const type = this.props.showModal;
 	return (
-	    <Modal show={(type == "login" || type == "join" || type == "mustLogin") ?
-			 true : false}
+	    <Modal show={(type == "login" || type == "join" || type == "mustLogin") ? true : false}
 		   onHide={()=>this.props.setShowModal(false)}>
 		<form className="login-form" onSubmit={this.onSubmit.bind(this)}>
 		    {this.props.error?
@@ -58,12 +56,8 @@ class ModalLogin extends Component {
 		 </fieldset>
 		 :null}
 		<fieldset className="form-group">
-		    <label>Email:</label>
-		    <input ref="email" autoFocus className="form-control" />
-		</fieldset>
-		<fieldset className="form-group">
-		    <label>Password:</label>
-		    <input ref="password" type="password" className="form-control" />
+		    <label>Username:</label>
+		    <input ref="username" autoFocus className="form-control" />
 		</fieldset>
 		<br/>
 

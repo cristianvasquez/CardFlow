@@ -9,4 +9,4 @@ config.js
 *.pkl
 .idea
 package-lock.json
-local.md
+noVersioning

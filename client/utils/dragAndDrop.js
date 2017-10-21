@@ -1,4 +1,4 @@
-import { getCard, getParent, getAllChildren } from './cards';
+import {getAllChildren, getCard, getParent} from './cards';
 
 /* Implements the drag source contract. */
 export const cardSource = {

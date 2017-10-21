@@ -1,7 +1,6 @@
 import {TweenMax} from "gsap";
 
-import { cardsToColumns, getChildren, getCard, getParent, getAllParents,
-	 getAllChildren, forEachCard, getFirstChildren, getCardsColumn } from './cards';
+import {forEachCard, getAllParents, getCard, getCardsColumn, getChildren, getFirstChildren} from './cards';
 
 
 export function scrollTo(card, column) {

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, Route, browserHistory } from 'react-router';
-import { createStore, applyMiddleware } from 'redux';
+import {Provider} from 'react-redux';
+import {browserHistory, Router} from 'react-router';
+import {applyMiddleware, createStore} from 'redux';
 import reduxThunk from 'redux-thunk';
 
 import routes from './routes';
@@ -14,20 +14,14 @@ const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 // store contains the state
 const store = createStoreWithMiddleware(reducers);
 
-/* Google analytics */
-import settings from '../config/settings.js';
-import ReactGA from "react-ga";
-ReactGA.initialize(settings.googleAnalyticsCode);
 function logPageView() {
-    ReactGA.set({ page: window.location.pathname });
-    ReactGA.pageview(window.location.pathname);
     window.scrollTo(0, 0);
 }
 
-
 ReactDOM.render(
-    <Provider store={store}>
-	<Router history={browserHistory} routes={routes} onUpdate={logPageView}/>
-    </Provider>
-  , document.querySelector('.app'));
+        <Provider store={store}>
+            <Router history={browserHistory} routes={routes} onUpdate={logPageView}/>
+        </Provider>
+        , document.querySelector('.app')
+);
 

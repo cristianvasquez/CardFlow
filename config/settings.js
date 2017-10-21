@@ -1,8 +1,7 @@
 var settings = {
-    googleAnalyticsCode: "UA-44003603-21",
+    metaSocialImage: "http://www.defineme/media/images/social.png",
+    domain: "http://www.defineme/",
 };
 
-settings.metaSocialImage = settings.domain + "/media/images/social.png";
 
 module.exports = settings;
-

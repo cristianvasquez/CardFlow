@@ -2,17 +2,20 @@ import removeMd from 'remove-markdown';
 import cuid from 'cuid';
 import slug from 'slug';
 import {cardsToColumns, getCard} from '../../client/utils/cards';
+const config = require('../../config/config.js');
 
 const Tree = require('../models/tree');
+
+const context = config.defaultContext;
 
 export function getTree (req, res, next) {
     var slug = req.params.slug;
     console.log("Get tree " + slug);
-    /* Find a tree by id, and send it as a respponse */
+    /* Find a tree by id, and send it as a response */
     Tree.findOne({slug:slug}, function(err, tree){
 	if (err) { return next(err); }
-	/* console.log("tree " + tree);*/
-	return res.send(tree);
+		/* console.log("tree " + tree);*/
+		return res.send(tree);
     });
 }
 
@@ -29,7 +32,7 @@ function forEachChild(root, fun) {
 export function exportTree (req, res, next) {
     var slug = req.params.slug;
 
-    /* Find a tree by id, and send it as a respponse */
+    /* Find a tree by id, and send it as a response */
     Tree.findOne({slug:slug}, function(err, tree){
 	if (err || !tree) { return res.status(404).end(); }
 	console.log("Exporting tree " + tree.slug);
@@ -74,7 +77,7 @@ export function deleteTree(req, res) {
     var slug = req.params.slug;
     console.log("Deleting tree.");
     Tree.findOne({ slug: slug }).exec((err, tree) => {
-	if (tree.author != req.user.email) { res.status(401).end(); }	
+
 	if (err) { res.status(500).send(err); }
 	console.log("Deleted tree " + tree.slug);
 	tree.remove(() => {
@@ -84,25 +87,11 @@ export function deleteTree(req, res) {
 }
 
 export function listTrees (req, res, next) {
-    console.log('List trees ' + req.user.email);
-    /* Return the list of all trees */
-    Tree.find({author:req.user.email}).sort('-updatedAt').then((allTrees)=>{
+    Tree.find({author:context}).sort('-updatedAt').then((allTrees)=>{
 	console.log('all trees' + JSON.stringify(allTrees));
 	return res.send(allTrees);
     });
 }
-
-
-/* 
-export function listTemplates (req, res, next) {
-    var AboutTemplate = JSON.parse(fs.readFileSync('../assets/trees/about.nls', 'utf8'));
-    var BlankTemplate = JSON.parse(fs.readFileSync('../assets/trees/blank.nls', 'utf8'));
-    var StoryStructureTemplate = JSON.parse(fs.readFileSync('../assets/trees/story.nls', 'utf8'));
-
-    var templates = [AboutTemplate, BlankTemplate, StoryStructureTemplate]
-    return res.send(templates);
-}
-*/
 
 export function createTree (req, res, next) {
     /* Getting the tree from the POST request sent to me by react */
@@ -119,8 +108,7 @@ export function createTree (req, res, next) {
     }
     /* Create slug - just slugify name */
     tree.slug = slug(tree.name)+"-"+cuid.slug();
-    /* Set tree's author to email passed to me by the passport */
-    tree.author = req.user.email;
+    tree.author = context;
     tree = new Tree(tree);
 
     console.log("Creating new tree: " + tree.name);
@@ -139,7 +127,7 @@ export function updateTree (req, res, next) {
     var options =  { upsert: true, new: true, setDefaultsOnInsert: true };
     /* Find a tree by id and create it if it doesn't exist */
     Tree.findOne({slug:tree.slug}, (err, t) => {
-	if (!t.author || t.author != req.user.email) { res.status(401).end(); }
+
 	if (err) { return next(err); }
 	/* If tree does exist - update it. */
 	console.log("Updating tree. Received from react: " + JSON.stringify(tree));

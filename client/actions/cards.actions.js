@@ -2,35 +2,35 @@ import {handleScroll} from '../utils/handleScroll';
 
 var API_URL = 'http://localhost:3000/api/v1';
 
-
 console.log("API_URL " + API_URL);
 export {API_URL};
 
 const config = {
-    headers:  { authorization: localStorage.getItem('token')}	
+    headers:  {
+        authorization: localStorage.getItem('token')
+    }
 };
-
 
 export function updateTreeName(value) {
     /* unused */
     return {
-	type: 'UPDATE_TREE_NAME',
-	payload: value
+        type: 'UPDATE_TREE_NAME',
+        payload: value
     }
 }
 
 export function setCardColor(color) {
     /* unused */
     return {
-	type: 'SET_CARD_COLOR',
-	payload: color
+        type: 'SET_CARD_COLOR',
+        payload: color
     }
 }
 export function setCardConfig(boolean) {
     /* unused */
     return {
-	type: 'SET_CARD_CONFIG',
-	payload: boolean
+        type: 'SET_CARD_CONFIG',
+        payload: boolean
     }
 }
 
@@ -48,7 +48,7 @@ export function checkCheckbox(index, cardId) {
 export function createCard(direction, card) {
     var cardsCreated = 0;
     if(localStorage.getItem('cardsCreated')){
-	cardsCreated = parseInt(localStorage.getItem('cardsCreated'));
+	    cardsCreated = parseInt(localStorage.getItem('cardsCreated'));
     }
     localStorage.setItem('cardsCreated', (cardsCreated+1));
     
@@ -112,4 +112,3 @@ export function setActiveCard(cardId) {
 	payload: cardId
     }
 }
-

@@ -44,7 +44,7 @@ class MenuEdit extends Component {
 		    {/* Show tree settings only to the author,
 			checking source just in case. */}
 		    {this.props.user
-		     && this.props.user.email == this.props.tree.author
+		     && this.props.user.username == this.props.tree.author
 		     && this.props.tree.source == "Online" ?
 		     <li key="settings">
 			 <a onClick={()=>this.props.setShowModal("tree")}>

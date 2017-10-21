@@ -92,7 +92,7 @@ class Main extends Component {
 	    /* Autosave tree if it's online and I'm the author.  */
 	    if (tree.saved == false
 		&& tree.source == "Online"
-		&& tree.author == user.email) {
+		&& tree.author == user.username) {
 		this.props.updateTree(this.props.tree);
 		var today = user.stats.calendar[user.stats.calendar.length - 1];
 		this.props.updateWordcount(today);		

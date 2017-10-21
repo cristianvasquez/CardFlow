@@ -18,31 +18,6 @@ class ModalFree extends Component {
 		    <p>Desktop version of cardflow is now available for
 			all the platforms! <br/>
 			Awesome, right? =) </p>
-		    <div className="panel-download">
-			<a href="/downloads/cardflow-linux-x64.zip"
-			   className="btn btn-primary right">Download</a>
-			<h2 className="fullheight">Linux</h2>
-			<div className="clearfix"></div>			    
-		    </div>
-
-		    <div className="panel-download">
-			<a href="/downloads/cardflow-darwin-x64.zip"
-			   className="btn btn-primary right">Download</a>
-			<h2>Mac</h2>
-			<p> (Untested. Message me to report bugs.) </p>
-			<div className="clearfix"></div>			    
-		    </div>
-
-		    <div className="panel-download">
-			<a href="/downloads/cardflow-win32-x64.zip"
-			   className="btn btn-primary right">Download</a>
-			<h2>Windows</h2>
-			<p> (Untested. Message me to report bugs.) </p>    
-			<div className="clearfix"></div>
-		    </div>
-
-		    
-		    <div className="clearfix"></div>
 		</div>
 	    </Modal>
 	);

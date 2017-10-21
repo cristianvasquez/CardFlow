@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { browserHistory } from 'react-router';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-router';
 /* Actions */
 import * as treesActions from '../actions/trees.actions';
 
 /* Utils */
-import handleScroll from '../utils/handleScroll';
 
 class TreeManager extends Component {
     componentDidMount(){

@@ -36,7 +36,7 @@ export function createTree(tree) {
     var tree_url = `${API_URL}/trees`;
 
     const config = {
-	headers:  { authorization: localStorage.getItem('token')}	
+		headers:  { authorization: localStorage.getItem('token') }
     };
 
     delete tree._id;
@@ -48,7 +48,7 @@ export function createTree(tree) {
 		 browserHistory.push('/tree/'+response.data.slug);
 		 var tree = response.data;
 		 tree.saved = true;
-		 tree.source = "Online";	
+		 tree.source = "Online";
 		 dispatch({
 		     type: 'LOAD_TREE',
 		     payload: tree
@@ -103,7 +103,7 @@ export function saveTree(tree) {
 		 browserHistory.push('/tree/'+response.data.slug);
 		 var tree = response.data;
 		 tree.saved = true;
-		 tree.source = "Online";	
+		 tree.source = "Online";
 
 		 dispatch({
 		     type: 'LOAD_TREE',
@@ -147,11 +147,11 @@ export function saveTreeBrowser(tree) {
 export function loadTreeBrowser() {
     var tree = localStorage.getItem('tree');
     tree = JSON.parse(tree);
-    tree.source = "Browser";	
+    tree.source = "Browser";
     /* console.log("Loading tree from local storage " + JSON.stringify(tree));   */
     return {
-	type: 'LOAD_TREE',
-	payload: tree
+		type: 'LOAD_TREE',
+		payload: tree
     }
 }
 
@@ -214,7 +214,7 @@ export function loadTree(slug) {
 		 if (response.data) {
 		     var tree = response.data;
 		     tree.saved = true;
-		     tree.source = "Online";	
+		     tree.source = "Online";
 		     /* If returned a tree - return a tree */
 		     dispatch({
 			 type: 'LOAD_TREE',
@@ -265,7 +265,7 @@ export function loadTemplate(name) {
     aboutTree.source = "Template";
     blankTree.source = "Template";
     storyTree.source = "Template";
-    promptTree.source = "Template";	
+    promptTree.source = "Template";
 
     console.log("Loading tree from template " + name);
     switch(name) {
