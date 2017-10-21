@@ -33,13 +33,7 @@ function userPayload(user) {
 
 export function getUser(req, res) {
 
-    const username = req.user.username;
-
-    if (!username) {
-        return res.status(422).send({
-            error:'Provide username'
-        });
-    }
+    const username = config.defaultContext;
 
     console.log("Get user. " + username);
     // Search for a user with a given username
@@ -73,45 +67,5 @@ export function selectUser(req, res, next) {
         }
 
         res.send(userPayload(existingUser))
-    });
-}
-
-export function updateWordcount(req, res) {
-    const today = req.body;
-    User.findOne({username:req.user.username}, function(err, user){
-	if (err) { return next(err); }
-
-	var calendar = [];
-
-	if (user.stats) {
-	    calendar = [...user.stats.calendar];
-	}
-
-	if (calendar.length && calendar[calendar.length - 1].date == today.date) {
-	    /* If the last date in user's calendar is today - update it */
-	    calendar[calendar.length - 1] = today;
-	    console.log("Update day.");
-	} else {
-	    /* Otherwise add it */
-	    calendar.push(today);
-	    console.log("Push day.");
-	}
-	/* calendar.push(today);*/
-
-	user.stats = {
-	    calendar:calendar
-	};
-
-	user.save(function(err, usr){
-	    if (err) {
-	    	return next(err);
-	    }
-	    console.log("Updated user " + JSON.stringify(usr, null, 4));
-	    var updatedToday = usr.stats.calendar[usr.stats.calendar.length - 1]
-	    res.send({
-		    message: "Wordcount updated! " + updatedToday.wordcount
-	    }); 
-	});
-
     });
 }

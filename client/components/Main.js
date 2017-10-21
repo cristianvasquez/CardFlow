@@ -11,7 +11,6 @@ import MetaInfo from './MetaInfo';
 /* Actions */
 import * as cardsActions from '../actions/cards.actions';
 import * as treesActions from '../actions/trees.actions';
-import {updateWordcount} from '../actions/profiles.actions';
 /* Utils */
 import {cardsToColumns, search} from '../utils/cards';
 import handleScroll from '../utils/handleScroll';
@@ -94,19 +93,8 @@ class Main extends Component {
 		&& tree.source == "Online"
 		&& tree.author == user.username) {
 		this.props.updateTree(this.props.tree);
-		var today = user.stats.calendar[user.stats.calendar.length - 1];
-		this.props.updateWordcount(today);		
 	    }
 	}
-
-	/* Warning that tree wasn't saved. */
-	/* 
-	if (this.props.tree.saved) {
-	    window.removeEventListener('beforeunload', unsavedWarning);
-	} else {
-	    window.addEventListener('beforeunload', unsavedWarning);
-	}
-	*/
 
     }
 
@@ -224,5 +212,4 @@ function mapStateToProps(state) {
 }
 /* First argument allows to access state */
 /* Second allows to fire actions */
-export default connect(mapStateToProps, {...cardsActions, ...treesActions,
-					 updateWordcount})(Main);
+export default connect(mapStateToProps, {...cardsActions, ...treesActions})(Main);

@@ -1,24 +1,19 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 
 import {API_URL} from './cards.actions';
 
 export function fetchUser() {
-    const config = {
-		headers:  { authorization: localStorage.getItem('token')}
-    };
 
-    /* console.log("profiles.actions:");*/
-    /* console.log("Fetching user.");*/
     return function(dispatch) {
-	axios.get(`${API_URL}/auth/profile`, config)
+	axios.get(`${API_URL}/auth/profile`)
 	     .then(response => {
 		 /* console.log("profiles.actions:");*/
 		 console.log("Fetched user " + JSON.stringify(response.data));
-		 dispatch({
-		     type: 'AUTH_USER',
-		     payload: response.data
-		 });
+			 dispatch({
+				 type: 'AUTH_USER',
+				 payload: response.data
+			 });
 	     });
     }
 }
@@ -34,8 +29,6 @@ export function login(credentials) {
 				 type: 'AUTH_USER',
 				 payload: response.data
 			 });
-
-			 localStorage.setItem('token', response.data.token);
 			 console.log("Redirecting to /");
 			 browserHistory.push('/trees');
 	     })
@@ -66,17 +59,4 @@ export function logout() {
 
     console.log("Redirecting to /.");
     browserHistory.push('/');    
-}
-
-export function updateWordcount(today) {
-    const config = {
-	headers:  { authorization: localStorage.getItem('token')}
-    };
-    return function(dispatch) {
-	axios.post(`${API_URL}/update-wordcount`, today, config)
-	     .then(response => {
-		 /* Wordcount updated */
-		 /* console.log(response.data.message);*/
-	     });
-    }
 }

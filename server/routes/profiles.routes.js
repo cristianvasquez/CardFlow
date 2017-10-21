@@ -14,7 +14,5 @@ router.route('/auth-test').get(function(req, res){
 // router.route('/auth/join').post(profilesControllers.selectUser);
 router.route('/auth/selectUser').post(profilesControllers.selectUser);
 router.route('/auth/profile').get(profilesControllers.getUser);
-router.route('/update-wordcount').post(profilesControllers.updateWordcount);
-
 export default router;
 
