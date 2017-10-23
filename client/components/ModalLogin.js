@@ -49,12 +49,7 @@ class ModalLogin extends Component {
 		      <h1> Create Account </h1>
 		    }
 		</fieldset>
-		{type=="mustLogin" ?
-		 <fieldset className="form-group">
-		     <p>Unregistered users can create up to 100 cards.<br/>
-			 To get more cards, create an account!</p>
-		 </fieldset>
-		 :null}
+
 		<fieldset className="form-group">
 		    <label>Username:</label>
 		    <input ref="username" autoFocus className="form-control" />

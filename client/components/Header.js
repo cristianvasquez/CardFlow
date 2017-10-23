@@ -11,8 +11,6 @@ import {ActionCreators} from 'redux-undo';
 /* Modals */
 import ModalLogin from './ModalLogin';
 /* import ModalTreeSettings from './ModalTreeSettings';*/
-import ModalShare from './ModalShare';
-import ModalDesktop from './ModalDesktop';
 import ModalTreeSettings from './ModalTreeSettings';
 /* Menus */
 import MenuTree from './MenuTree';
@@ -34,9 +32,6 @@ class Header extends Component {
 	    <div className="header">
 		<ModalTreeSettings />
 		<ModalLogin />
-		<ModalShare />
-		<ModalDesktop />
-
 		<div className="main-menu left">
 		    <MenuTree location={this.props.location}/>
 		    { !atMyTrees ?
@@ -52,10 +47,10 @@ class Header extends Component {
 		     <h1>{this.props.tree.name}</h1>
 		    }
 	        {!atMyTrees
-		 && this.props.user
-		 && this.props.user.username == this.props.tree.author
-		 && this.props.tree.source == "Online"
-		 && this.props.tree.saved ?
+			 && this.props.user
+			 && this.props.user.username == this.props.tree.author
+			 && this.props.tree.source == "Online"
+			 && this.props.tree.saved ?
 		 <span className="autosaved left">
 		     [saved]
 		 </span>
@@ -67,7 +62,7 @@ class Header extends Component {
 		    <Search />
 		</div>
 		{/* <DebuggingPanel/>*/}
-		<div className="clearfix"></div>
+			<div className="clearfix"></div>
 	    </div>
 	);
     }
@@ -83,5 +78,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {...cardsActions, ...treesActions,
-					 fetchUser, logout, undo, redo,
-					 setShowModal})(Header);
+						 fetchUser, logout, undo, redo,
+						 setShowModal})(Header);
