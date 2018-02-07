@@ -4,12 +4,8 @@
   "description": "A replacement of my desktop wiki.",
   "main": "./server/index.js",
   "scripts": {
-    "startserver": "cd ./server && BABEL_DISABLE_CACHE=1 NODE_ENV=development nodemon index.js",
-    "startclient": "cd ./client && NODE_ENV=development node ../node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "buildserver": "NODE_ENV=production cd ./server && webpack --config ./webpack.config.server.js --progress",
-    "buildclient": "NODE_ENV=production cd ./client &&  webpack -p --config ./webpack.config.js --progress",
-    "build": "NODE_ENV=production cd ./client &&  webpack -p --config ./webpack.config.js --progress &&  cd ../server && webpack --config ./webpack.config.server.js --progress",
-    "serve": "cd ./server && NODE_ENV=production forever ./index.js"
+    "start": "cd ./client && NODE_ENV=development node ../node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "NODE_ENV=production cd ./client &&  webpack -p --config ./webpack.config.js --progress"
   },
   "devDependencies": {
     "babel-core": "^6.2.1",
