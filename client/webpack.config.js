@@ -16,15 +16,6 @@ function getPlugins() {
 			}
 		}));
 
-        // plugins.push(new webpack.optimize.UglifyJsPlugin({
-        //     minimize: true,
-        //     output: {
-        //         comments: false
-        //     },
-        //     compressor: {
-        //         warnings: false
-        //     }
-        // }));
     }
 
     return plugins;
