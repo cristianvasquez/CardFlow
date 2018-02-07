@@ -1,24 +1,21 @@
 // import React, { Component } from 'react';
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import { connect } from 'react-redux';
-
+import {connect} from 'react-redux';
 /* Vendor */
 import Cookies from "js-cookie";
-
 /* Styles */
 import '../styles/bootstrap.min.css';
 import '../styles/font-awesome.min.css';
 import '../styles/simplemde.min.css';
 import '../styles/style.scss';
-
 /* My Components */
 import Header from './Header';
 import Hotkeys from './Hotkeys';
-
 /* Actions */
-import { fetchUser } from '../actions/profiles.actions';
+import {fetchUser} from '../actions/profiles.actions';
+
 console.log("App.js");
 
 class App extends Component {

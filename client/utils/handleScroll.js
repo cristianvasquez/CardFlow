@@ -6,21 +6,21 @@ import {forEachCard, getAllParents, getCard, getCardsColumn, getChildren, getFir
 export function scrollTo(card, column) {
     var card = document.getElementById('card-' + card.id);
     /* var card = ReactDOM.findDOMNode(card);*/
-    var col = document.getElementById('column-'+column)
+    let col = document.getElementById('column-' + column);
 
     /* For search. If couldn't find a card - dont scroll. */
     if (!(card && col)){ return null;}
 
-    var rect = card.getBoundingClientRect();
-    var colRect = col.getBoundingClientRect();
+    let rect = card.getBoundingClientRect();
+    let colRect = col.getBoundingClientRect();
 
     /* Calculate card's center. (relative to what?) */
-    var cardCenter = rect.top + rect.height*0.5;
+    let cardCenter = rect.top + rect.height * 0.5;
 
     /* If I want to scroll the top of the card to almost the top of the column.  */
     cardCenter = rect.top + colRect.height/4;
-    
-    var scrollTop = col.scrollTop + (cardCenter - col.offsetHeight*0.5)
+
+    let scrollTop = col.scrollTop + (cardCenter - col.offsetHeight * 0.5);
     /* col.scrollTop = scrollTop;*/
 
     TweenMax.to(col, 0.15, { scrollTop: scrollTop, ease: Power2.easeInOut });

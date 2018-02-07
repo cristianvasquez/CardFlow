@@ -1,0 +1,46 @@
+{
+    "_id": "590e0ad3f5916510d40627c2",
+    "slug": "",
+    "name": "Test",
+    "cards": {
+        "id": "root",
+        "children": [
+            {
+                "id": "0",
+                "content": "Test dsd",
+                "children": [
+                    {
+                        "id": "3-9r13749",
+                        "content": "# Another List\n- [ ] Hey\n- [X] There\n- [ ] Buddys",
+                        "children": []
+                    },
+                    {
+                        "id": "3-zh537tw",
+                        "content": "",
+                        "children": []
+                    }
+                ],
+                "parent_id": "root"
+            },
+            {
+                "id": "5-uw1377o",
+                "content": "",
+                "children": []
+            },
+            {
+                "id": "4-9k037t6",
+                "content": "",
+                "children": []
+            }
+        ]
+    },
+    "author": "raymestalez@gmail.com",
+    "__v": 0,
+    "editing": true,
+    "modified": false,
+    "activeCard": "5-uw1377o",
+    "updatedAt": "2017-05-08T01:28:47.410Z",
+    "createdAt": null,
+    "saved": true,
+    "source": "Online"
+}

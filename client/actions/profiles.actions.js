@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-
 import {API_URL} from './cards.actions';
 
 export function fetchUser() {

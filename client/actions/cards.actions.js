@@ -1,16 +1,5 @@
 import {handleScroll} from '../utils/handleScroll';
 
-var API_URL = 'http://localhost:3000/api/v1';
-
-console.log("API_URL " + API_URL);
-export {API_URL};
-
-const config = {
-    headers:  {
-        authorization: localStorage.getItem('token')
-    }
-};
-
 export function updateTreeName(value) {
     /* unused */
     return {

@@ -1,9 +1,8 @@
-
-var INITIAL_STATE = {
+let INITIAL_STATE = {
     maxColumns: 5,
     theme: "Light",
     showModal: ""
-}
+};
 
 export default function(state=INITIAL_STATE, action) {
     switch(action.type) {

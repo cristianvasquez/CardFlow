@@ -14,4 +14,4 @@ export const DEFAULT_TREE = {
     modified: false,
     editing: false,
     query: ""
-}
+};

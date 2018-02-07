@@ -2,21 +2,21 @@ import moment from 'moment';
 
 
 function calculateStreak(calendar) {
-    var currentStreak = 0;
+    let currentStreak = 0;
     /* Order days starting with the most recent one  */
-    var days = [...calendar];
+    let days = [...calendar];
     days.reverse();
     /* console.log("days " + JSON.stringify(days));*/
     /* Loop through days */
-    for (var i = 0; i < days.length; i++) {
-	var d = days[i];
-	if (d.wordcount > 99) {
+    for (let i = 0; i < days.length; i++) {
+        let d = days[i];
+        if (d.wordcount > 99) {
 	    /* Increment the streak if this habit is completed */
 	    currentStreak += 1;
 	} else {
 	    break;
-	};
-    };
+        }
+    }
     console.log("Setting state currentStreak " + currentStreak);
     return currentStreak;
 }
@@ -65,10 +65,10 @@ var INITIAL_STATE = {
 export default function(state=INITIAL_STATE, action) {
     switch(action.type) {
 	case 'AUTH_USER':
-	    var user = action.payload;
-	    console.log(user);
-	    var fullCalendar = generateCalendar(user.stats.calendar);
-	    user.stats.calendar = fullCalendar;
+        let user = action.payload;
+        console.log(user);
+        let fullCalendar = generateCalendar(user.stats.calendar);
+        user.stats.calendar = fullCalendar;
 	    user.stats.streak = calculateStreak(fullCalendar);
 	    return {...state, user: user, error: "" };
 	case 'UNAUTH_USER':

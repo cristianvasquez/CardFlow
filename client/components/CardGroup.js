@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 /* Actions */
 import * as cardsActions from '../actions/cards.actions';
 /* Utils */
-import { getAllParents } from '../utils/cards';
-import { search } from '../utils/cards';
+import {getAllParents, search} from '../utils/cards';
 
 class CardGroup extends Component {
     render() {

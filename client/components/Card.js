@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 /* Vendor components */
-import Remarkable from 'remarkable';
-import { DragSource, DragTarget } from 'react-dnd';
-
+import {DragSource, DragTarget} from 'react-dnd';
 /* Actions */
 import * as cardsActions from '../actions/cards.actions';
 import {setEditing} from '../actions/trees.actions';
-
 /* Utils */
-import { getAllChildren, isActive, getParent, getCard } from '../utils/cards';
+import {getParent, isActive} from '../utils/cards';
 import {cardSource} from '../utils/dragAndDrop';
-
 /* Components */
 import Editor from './Editor';
 import ColorBox from './ColorBox';

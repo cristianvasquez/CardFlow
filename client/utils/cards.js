@@ -7,14 +7,13 @@ export function forEachChild(root, fun) {
     /* Return updated children */
     return root.children.map((c)=>{
 	/* Recursively do this for all the child's children;*/
-	var updatedChildren = forEachChild(c, fun);
-	c.children = updatedChildren;
+        c.children = forEachChild(c, fun);
 	
 	/* Apply function to this child. */
 	/* Passing it the root, which represents child's parent, in case you need it,
 	   so you can do forEachChild(root, (child, itsParent)=>{ .... }); */
-	var updatedChild = fun(c, root);
-	if (updatedChild) {
+        let updatedChild = fun(c, root);
+        if (updatedChild) {
 	    /* Fun can return an updated child. */
 	    return updatedChild;
 	} else {
@@ -27,9 +26,10 @@ export function forEachChild(root, fun) {
 
 export function immutableCopy(root) {
     /* Copy root object */
-    /* Unfortunately, just doing that isn't enough, becasue all of it's children
+    /* Unfortunately, just doing that isn't enough, because all of it's children
        will still refer to the old objects, that's how js works for some reason. */
-    var newRoot = {...root};
+    let newRoot = {...root};
+
     /* So I have to go through each child and copy it individually */
     function copyEachChild(root) {
 	/* The map will return an array, containing copies of all children */
@@ -40,7 +40,8 @@ export function immutableCopy(root) {
 	    return {...c};
 	});
     }
-    var copiedChildren = copyEachChild(root);
+
+    let copiedChildren = copyEachChild(root);
     newRoot.children = copiedChildren;
     return newRoot;
 }
@@ -49,37 +50,38 @@ export function immutableCopy(root) {
 
 /* Get card by id */
 export function getCard(cardId, root) {
-    /* console.log("Searchching for a card " + cardId + " in " + JSON.stringify(root, null, 4));*/
+    /* console.log("Searching for a card " + cardId + " in " + JSON.stringify(root, null, 4));*/
     /* Find card by id */
     var card = null;
     forEachChild(root, (c)=>{
 	/* console.log("Looping through card " + c.id);*/
-	if (c.id == cardId) {
+	if (c.id === cardId) {
 	    /* console.log("Found card " + JSON.stringify(c, null, 4));*/
 	    card = c;
 	}
 	return c;
-    })
+    });
     return card;
 }
 
 /* Get card's parent */
 export function getParent(card, root) {
-    var cardsParent = root;
+    let cardsParent = root;
 
     forEachChild(root, (c, p)=>{
-	if (c.id == card.id) { cardsParent = p; }
+	if (c.id === card.id) { cardsParent = p; }
     });
 
     return cardsParent;
 }
 
 export function getAllParents(card, root) {
-    var allParents = [];
-    function getParents(card, root) {
-	var parent = getParent(card, root);
+    let allParents = [];
 
-	if (parent && parent.id !== "root") {
+    function getParents(card, root) {
+        let parent = getParent(card, root);
+
+        if (parent && parent.id !== "root") {
 	    /* If a parent exists - add it to the list of parents */
 	    allParents.push(parent);
 	    /* and get it's parents */
@@ -92,7 +94,7 @@ export function getAllParents(card, root) {
 }
 
 export function getAllChildren(root) {
-    var allChildren = [];
+    let allChildren = [];
     forEachChild(root, (c)=>{
 	allChildren.push(c);
     });
@@ -100,9 +102,9 @@ export function getAllChildren(root) {
 }
 /* Get card relative to selected one */
 export function getCardRelativeTo(card, root, direction) {
-    var cardPosition = getCardsPosition(card, root);
-    var parent = getParent(card, root);
-    
+    let cardPosition = getCardsPosition(card, root);
+    let parent = getParent(card, root);
+
     switch(direction) {
 	case 'up':
 	    cardPosition -= 1;
@@ -119,7 +121,7 @@ export function getCardRelativeTo(card, root, direction) {
 	    cardPosition = 0;
 	    break;
     }
-    var relativeCard = getCardByPosition(cardPosition, parent);
+    let relativeCard = getCardByPosition(cardPosition, parent);
 
     if (relativeCard) {
 	return relativeCard;
@@ -131,9 +133,9 @@ export function getCardRelativeTo(card, root, direction) {
 /* get card by position */
 export function getCardByPosition(position, parent) {
     /* Find card by id */
-    var card = null;
+    let card = null;
     parent.children.map((c, index)=>{
-	if (index == position) {
+	if (index === position) {
 	    card = c;
 	}
     });
@@ -142,20 +144,19 @@ export function getCardByPosition(position, parent) {
 
 /* Get siblings. Not used anywhere. */
 export function getSiblings(card, root) {
-    var parent = getParent(card, root);
-    var siblings = parent.children;
-    return siblings;
+    let parent = getParent(card, root);
+    return parent.children;
 }
 
 
 /* Get card's position */
 export function getCardsPosition(card, root) {
-    var parent = getParent(card, root);
-    var children = parent.children;
-    var position = null;
+    let parent = getParent(card, root);
+    let children = parent.children;
+    let position = null;
     /* Loop through children, find the card, find out it's position */
     children.map((c, index)=>{
-	if (c.id == card.id) {
+	if (c.id === card.id) {
 	    position = index;
 	}
     });
@@ -166,12 +167,12 @@ export function getCardsPosition(card, root) {
 /* So I could scroll it to this card, without touching anything else. */
 export function getCardsColumn(card, columns) {
     /* Loop through the columns */
-    var cardsColumn = null;
+    let cardsColumn = null;
     columns.map((column, columnIndex)=>{
 	column.cardGroups.map((cardGroup)=>{
 	    cardGroup.cards.map((c)=>{
 		/* Searching for the first child */
-		if (c.id == card.id) {
+		if (c.id === card.id) {
 		    cardsColumn = columnIndex;
 		}
 	    });
@@ -183,8 +184,8 @@ export function getCardsColumn(card, columns) {
 
 /* Loop through columns and return the first card's children (to scroll to them) */
 export function getFirstChildren(card, columns) {
-    var firstChildren = [];
-    var cardsChildren = getAllChildren(card);
+    let firstChildren = [];
+    let cardsChildren = getAllChildren(card);
     /* Loop through the columns */
     columns.forEach((column, columnIndex)=>{
 	var children = []
@@ -211,30 +212,25 @@ export function getFirstChildren(card, columns) {
     return firstChildren;
 }
 
-
-
 export function isActive(card, root, activeCard) {
     /* Checking card's parents and children
        if any of them is active - the card is active*/
-    var isActive = false;
-    var childrenActive = false;
-    var parentsActive = false;		
-    if (card.id == activeCard) {
-	isActive = true;	    
-	return "card";
+    let childrenActive = false;
+    let parentsActive = false;
+    if (card.id === activeCard) {
+		return "card";
     }
-    var parents = getAllParents(card, root);
+    let parents = getAllParents(card, root);
     parents.map((r)=>{
-	if (r.id == activeCard) {
+	if (r.id === activeCard) {
 	    parentsActive = true;
 	    return "card";
 	}
     });
-    
-    var children = getAllChildren(card, root);	    
-    var relatives = parents.concat(children);
+
+    let children = getAllChildren(card, root);
     children.map((r)=>{
-	if (r.id == activeCard) {
+	if (r.id === activeCard) {
 	    childrenActive = true;
 	}
     });
@@ -250,10 +246,10 @@ export function isActive(card, root, activeCard) {
 /* Insert card based on parent and position */
 export function insertCard(card, parent, insertPosition) {
     /* Get it's children - card's new siblings */
-    var children = parent.children;
+    let children = parent.children;
     /* Split children list into two parts, before and after insertion point */
-    var cardsBefore = children.splice(0, insertPosition);
-    var cardsAfter = children;
+    let cardsBefore = children.splice(0, insertPosition);
+    let cardsAfter = children;
     /* Insert the card  */
     cardsBefore.push(card);
     /* Put the list of children back together */
@@ -265,26 +261,25 @@ export function insertCard(card, parent, insertPosition) {
 
 /* Create card, insert it into the position relative to it's creator */
 export function createCard(tree, relativeTo, position, card) {
-    var root = tree.cards;	    
+    let root = tree.cards;
     /* Hacky way to generate new card's unique id */
-    var id = getAllChildren(root).length + 1 +"-"+cuid.slug();
+    let id = getAllChildren(root).length + 1 + "-" + cuid.slug();
     if (!card) {
-	/* If I'm not passing it a card - create an empty card */
-	var testContent = "New card " + id;
-	var card = {
-	    id: id,
-	    content: "",
-	    children: []
-	};
-    } 
-
+        /* If I'm not passing it a card - create an empty card */
+        let testContent = "New card " + id;
+        card = {
+            id: id,
+            content: "",
+            children: []
+        };
+    }
 
     /* Get parent of the card I'm inserting relative to */
-    var parent = getParent(relativeTo, root);
+    let parent = getParent(relativeTo, root);
     /* Get it's children - card's new siblings */
-    var children = parent.children;
+    let children = parent.children;
 
-    var insertPosition = getCardsPosition(relativeTo, root) + 1;
+    let insertPosition = getCardsPosition(relativeTo, root) + 1;
 
     /* By default, inserting after relativeTo card. */
     switch(position) {
@@ -314,18 +309,18 @@ export function createCard(tree, relativeTo, position, card) {
 }
 
 export function selectCard(activeCard, tree, direction) {
-    var parent = getParent(activeCard, tree.cards);
-    if (!(parent.id == "root" && direction == "left")) {
-	var selectedCard = getCardRelativeTo(activeCard, tree.cards, direction);
-	var activeCard = selectedCard;
+    let parent = getParent(activeCard, tree.cards);
+    if (!(parent.id === "root" && direction === "left")) {
+        let selectedCard = getCardRelativeTo(activeCard, tree.cards, direction);
+        activeCard = selectedCard;
     } 
     return {...tree, activeCard: activeCard.id}
 }
 
 /* Move card relative to itself - up/down/left/right */
 export function moveCard(card, root, position) {
-    var cardsPosition = getCardsPosition(card, root);
-    var parent = getParent(card, root);
+    let cardsPosition = getCardsPosition(card, root);
+    let parent = getParent(card, root);
 
     /* By default, inserting after relativeTo card. */
     switch(position) {
@@ -342,7 +337,7 @@ export function moveCard(card, root, position) {
 	    break;
 	case 'right':
 	    /* If I'm moving te card to the right - it's parent is the card above */
-	    if (cardsPosition == 0) {
+	    if (cardsPosition === 0) {
 		console.log("You can not move the top card to the right, because moving card to the right parents it to the card above it.");
 		return root;
 	    }
@@ -357,10 +352,8 @@ export function moveCard(card, root, position) {
 }
 
 export function dropCard(card, root, position, relativeTo) {
-    var cardsPosition = getCardsPosition(card, root);
-    var parent = getParent(card, root);
-    var relativeToPosition = getCardsPosition(relativeTo, root);
-    var relativeToParent = getParent(relativeTo, root);
+    let cardsPosition = getCardsPosition(card, root);
+    let parent = getParent(card, root);
 
     /* By default, inserting after relativeTo card. */
     switch(position) {
@@ -377,7 +370,7 @@ export function dropCard(card, root, position, relativeTo) {
 	    break;
 	case 'right':
 	    /* If I'm moving te card to the right - it's parent is the card above */
-	    if (cardsPosition == 0) {
+	    if (cardsPosition === 0) {
 		console.log("You can not move the top card to the right, because moving card to the right parents it to the card above it.");
 		return root;
 	    }
@@ -395,17 +388,17 @@ export function dropCard(card, root, position, relativeTo) {
 /* Not used anywhere. Not sure why. */
 export function updateCard(card, root) {
     root.children = forEachChild(root, (c)=>{
-	if (c.id == card.id) { 	// Find the card.
+	if (c.id === card.id) { 	// Find the card.
 	    /* Replace it with the updated version. */
 	    return c = card;
 	}
-    })
+    });
     return root;
 }
 
 /* Delete card */
 export function deleteCard(card, root) {
-    var parent = getParent(card, root);
+    let parent = getParent(card, root);
     parent.children = parent.children.filter((child)=>{
 	/* Return all the cards except this one */
 	return child.id !== card.id;
@@ -421,23 +414,24 @@ export function deleteCard(card, root) {
 /* Used to sort cards in order of position */
 export function sortByKey(array, key) {
     return array.sort(function(a, b) {
-	var x = a[key]; var y = b[key];
-	return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        let x = a[key];
+        let y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     });
 }	
 
 /* Take the cards tree structure, and turn it into
    columns-groups-cards structure for rendering */
 export function cardsToColumns (cards) {
-    var columns = [];
+    let columns = [];
     /* console.log("Converting cards to columns");*/
     /* Using a nested function as a hack to keep columns in a variable */
     function convertCardsToColumns (parent, columnIndex) {
 	/* Get all the children of the parent */
-	var cards = parent.children;
-	/* Loop over the cards and add them to the card group */
-	var cardGroup = {parent: parent, cards:[]};
-	cardGroup.cards = cards.map((card) => {
+        let cards = parent.children;
+        /* Loop over the cards and add them to the card group */
+        let cardGroup = {parent: parent, cards: []};
+        cardGroup.cards = cards.map((card) => {
 	    if (card.children.length) {
 		convertCardsToColumns(card, columnIndex + 1);
 	    }
@@ -467,13 +461,13 @@ export function cardsToColumns (cards) {
 export function search(card, query) {
     if (!query) { return true; }
 
-    var content = card.content;
+    let content = card.content;
     /* content = removeMd(content);*/
     content = content.toLowerCase();
     query = query.toLowerCase();
-    var words = query.split(" ");
+    let words = query.split(" ");
     console.log(words);
-    var found = true;
+    let found = true;
     words.map((w)=>{
 	if (w && !(content.includes(w.trim()))) {
 	    console.log("found " + w);
